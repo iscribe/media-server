@@ -1,0 +1,84 @@
+version: "2.1"
+services:
+  sonarr:
+    image: ghcr.io/linuxserver/sonarr
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /data/sonarr/config:/config
+      - /mnt/media:/mnt/media
+      #- /path/to/tvseries:/tv #optional
+      #- /path/to/downloadclient-downloads:/downloads #optional
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+    
+    
+  radarr:
+    image: ghcr.io/linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /data/radarr/config:/config
+      - /mnt/media:/mnt/media
+      #- /path/to/movies:/movies #optional
+      #- /path/to/downloadclient-downloads:/downloads #optional
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+    
+  readarr:
+    image: ghcr.io/linuxserver/readarr:nightly-version-0.1.0.963
+    container_name: readarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /data/redarr/config/:/config
+      - /mnt/media:/mnt/media
+      #- /path/to/books:/books #optional
+      #- /path/to/downloadclient-downloads:/downloads #optional
+    ports:
+      - 8787:8787
+    restart: unless-stopped
+    
+  get_iplayer:
+    image: kolonuk/get_iplayer
+    container_name: get_iplayer
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /data/get_ipayer/config:/root/.get_iplayer/
+      - /mnt/media/media/tv/iplayer:/root/output
+    ports:
+      - 8181:8181
+    restart: unless-stopped
+    
+  transmission-openvpn:
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - '/mnt/media/torrents/:/data'
+    environment:
+      - OPENVPN_PROVIDER=SURFSHARK
+      - OPENVPN_CONFIG=uk-man.prod.surfshark.com
+      - OPENVPN_USERNAME=<REMOVED>
+      - OPENVPN_PASSWORD=<FREMOVED>
+      - LOCAL_NETWORK=192.168.8.0/24
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+    ports:
+      - '9091:9091'
+    image: haugene/transmission-openvpn
