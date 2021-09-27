@@ -1,0 +1,34 @@
+version: "2.1"
+services:
+  ombi:
+    image: ghcr.io/linuxserver/ombi
+    container_name: ombi
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      #- BASE_URL=/ombi #optional
+    volumes:
+      - /data/ombi/config:/config
+    ports:
+      - 3579:3579
+    restart: unless-stopped
+  jellyfin:
+    image: ghcr.io/linuxserver/jellyfin
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /path/jellyfin/config:/config
+      - /mnt/media/media/tv:/data/tvshows
+      - /mnt/media/media/movies:/data/movies
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    devices:
+      - /dev/dri:/dev/dri #optional
+    restart: unless-stopped
