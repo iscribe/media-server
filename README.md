@@ -9,16 +9,20 @@ Images that will eventually be moved to their correct homes
 ## Downloaders
 Images for downloading and managing downloads
 
-* readarr - ebook manager
-* radarr - movie manager
-* sonarr - tv series manager
-* transmission - torrent downloader
+* Readarr - ebook manager
+* Radarr - movie manager
+* Sonarr - tv series manager
+* [TODO] - Sabnzbd
+* Transmission - torrent downloader
 * get_iPlayer - BBC content downloaders (currently doesnt work over vpn :( )
-
+* [TODO] - Lazy Librarian
 
 ## ACME Stack
 Ancillery images that are just usefull
 
 * Ombi
 * Jellyfin
+* [TODO] librespeed
+* [TODO] Heimdal
+
 
