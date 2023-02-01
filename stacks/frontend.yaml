@@ -44,8 +44,9 @@ services:
     <<: *common-keys-core # See EXTENSION FIELDS at the top
     container_name: "nginx-proxy-manager"
     image: 'jc21/nginx-proxy-manager:latest'
-    npm_proxy:
-      ipv4_address: 10.10.10.254
+    networks:
+      npm_proxy:
+        ipv4_address: 10.10.10.254
     ports:
       - '80:80' # Public HTTP Port. Port Forwarding on Router is ON.
       - '443:443' # Public HTTPS Port. Port Forwarding on Router is ON.
