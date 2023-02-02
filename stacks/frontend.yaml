@@ -79,6 +79,6 @@ services:
       - "6789:6789"
     volumes:
       - $DOCKERDIR/appdata/nzbget:/config
-      - $DATADIR/downloads:/data/downloads
+      - $DATADIR/downloads:/downloads
     environment:
       <<: *default-tz-puid-pgid
