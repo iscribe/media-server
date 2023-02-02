@@ -58,7 +58,7 @@ services:
       OPENVPN_PROVIDER: $VPN_PROVIDER
       OPENVPN_USERNAME: $VPN_USERNAME
       OPENVPN_PASSWORD: $VPN_PASSWORD
-      OPENVPN_CONFIG: uk-man.prod.surfshark.com
+      OPENVPN_CONFIG: uk-gla.prod.surfshark.com_udp.ovpn
       LOCAL_NETWORK: "$LOCAL_NETWORK"
       UMASK_SET: 2
       TRANSMISSION_RPC_AUTHENTICATION_REQUIRED: "true"
