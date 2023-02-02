@@ -44,7 +44,7 @@ services:
     ports:
       - "9696:9696"
     volumes:
-      - $DOCKERDIR/appdata/radarr:/config
+      - $DOCKERDIR/appdata/prowlarr:/config
     environment:
       <<: *default-tz-puid-pgid
 
