@@ -39,7 +39,7 @@ services:
     container_name: radarr
     networks:
       npm_proxy:
-        ipv4_address: 192.168.89.164
+        ipv4_address: 10.10.10.164
     ports:
       - "7878:7878"
     volumes:
