@@ -1,12 +1,7 @@
 networks:
-  default:
-    driver: bridge
   npm_proxy:
-    name: npm_proxy
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 10.10.10.0/24
+    external:
+      name: npm_proxy
 
 # Common environment values
 x-environment: &default-tz-puid-pgid
