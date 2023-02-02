@@ -1,7 +1,6 @@
 networks:
   npm_proxy:
-    external:
-      name: npm_proxy
+    name: npm_network
 
 # Common environment values
 x-environment: &default-tz-puid-pgid
