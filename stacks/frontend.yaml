@@ -52,7 +52,6 @@ services:
 #       DISABLE_IPV6: 'true'
   
   heimdall:
-    <<: *common-keys-core
     container_name: heimdall
     image: linuxserver/heimdall:latest
     ports:
