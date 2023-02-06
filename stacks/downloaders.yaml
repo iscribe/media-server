@@ -1,6 +1,3 @@
-networks:
-  npm_proxy:
-    name: npm_network
 
 # Common environment values
 x-environment: &default-tz-puid-pgid
@@ -8,29 +5,7 @@ x-environment: &default-tz-puid-pgid
   PUID: $PUID
   PGID: $PGID
   
-# Keys common to some of the core services that we always to automatically restart on failure
-x-common-keys-core: &common-keys-core
-  networks:
-    - npm_proxy
-  security_opt:
-    - no-new-privileges:true
-  restart: always
- 
-# Keys common to some of the dependent services/apps
-x-common-keys-apps: &common-keys-apps
-  networks:
-    - npm_proxy
-  security_opt:
-    - no-new-privileges:true
-  restart: unless-stopped
- 
-# Keys common to some of the services in media-services.txt
-x-common-keys-media: &common-keys-media
-  networks:
-    - npm_proxy
-  security_opt:
-    - no-new-privileges:true
-  restart: "no"
+
 
 services:
   # TransmissionBT - Torrent Downloader
@@ -39,9 +14,6 @@ services:
     image: haugene/transmission-openvpn:latest
     container_name: transmission-vpn
     restart: unless-stopped
-    networks:
-      npm_proxy:
-        ipv4_address: 10.10.10.169
     ports:
       - "9091:9091"
     cap_add:
@@ -83,12 +55,8 @@ services:
       LOG_TO_STDOUT: "true"
       
   nzbget:
-    <<: *common-keys-apps # See EXTENSION FIELDS at the top
     image: lscr.io/linuxserver/nzbget
     container_name: nzbget
-    networks:
-      npm_proxy:
-        ipv4_address: 10.10.10.216
     ports:
       - "6789:6789"
     volumes:
