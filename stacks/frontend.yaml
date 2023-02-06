@@ -1,6 +1,4 @@
-networks:
-  npm_proxy:
-    name: npm_network
+
 
 # Common environment values
 x-environment: &default-tz-puid-pgid
@@ -57,9 +55,6 @@ services:
     <<: *common-keys-core
     container_name: heimdall
     image: linuxserver/heimdall:latest
-    networks:
-      npm_proxy:
-        ipv4_address: 10.10.10.253
     ports:
       - '80:80'
       - '406:443'
