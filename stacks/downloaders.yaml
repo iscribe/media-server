@@ -52,7 +52,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - $DOCKERDIR/appdata/transmission-vpn/data:/data
       - $DOCKERDIR/appdata/transmission-vpn/config:/config
-      - $DATADIR/downloads:/data/downloads
+      - $DATADIR/torrents:/data/downloads
     environment:
       <<: *default-tz-puid-pgid
       OPENVPN_PROVIDER: $VPN_PROVIDER
