@@ -34,23 +34,24 @@ x-common-keys-media: &common-keys-media
 
 services:
 
-  mealie:
-    container_name: mealie
-    image: hkotel/mealie:latest
-    restart: always
-    ports:
-      - 9925:80
-    networks:
-      npm_proxy:
-        ipv4_address: 10.10.10.162
-    environment:
-      <<: *default-tz-puid-pgid
-      # Recipe Settings
-      RECIPE_PUBLIC: 'true'
-      RECIPE_SHOW_NUTRITION: 'true'
-      RECIPE_SHOW_ASSETS: 'true'
-      RECIPE_LANDSCAPE_VIEW: 'true'
-      RECIPE_DISABLE_COMMENTS: 'false'
-      RECIPE_DISABLE_AMOUNT: 'false'
-    volumes:
-      - $DOCKERDIR/appdata/mealie/data/mealie/data/:/app/data
+## Only works in 64bit Raspberry OS
+#   mealie:
+#     container_name: mealie
+#     image: hkotel/mealie:latest
+#     restart: always
+#     ports:
+#       - 9925:80
+#     networks:
+#       npm_proxy:
+#         ipv4_address: 10.10.10.162
+#     environment:
+#       <<: *default-tz-puid-pgid
+#       # Recipe Settings
+#       RECIPE_PUBLIC: 'true'
+#       RECIPE_SHOW_NUTRITION: 'true'
+#       RECIPE_SHOW_ASSETS: 'true'
+#       RECIPE_LANDSCAPE_VIEW: 'true'
+#       RECIPE_DISABLE_COMMENTS: 'false'
+#       RECIPE_DISABLE_AMOUNT: 'false'
+#     volumes:
+#       - $DOCKERDIR/appdata/mealie/data/mealie/data/:/app/data
