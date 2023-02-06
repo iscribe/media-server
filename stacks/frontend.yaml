@@ -34,24 +34,24 @@ x-common-keys-media: &common-keys-media
 
 ##-{ Services }-##################################################################
 services:
-  npm:
-    <<: *common-keys-core # See EXTENSION FIELDS at the top
-    container_name: "nginx-proxy-manager"
-    image: 'jc21/nginx-proxy-manager:latest'
-    networks:
-      npm_proxy:
-        ipv4_address: 10.10.10.254
-    ports:
-      - '80:80' # Public HTTP Port. Port Forwarding on Router is ON.
-      - '443:443' # Public HTTPS Port. Port Forwarding on Router is ON.
-      - '81:81' # Admin Web Port. Port Forwarding on Router is OFF. Internal Home Network Access only - 192.168.89.254:81.
-    volumes:
-      - $DOCKERDIR/appdata/npm/config:/config 
-      - $DOCKERDIR/appdata/npm/letsencrypt:/etc/letsencrypt
-      - $DOCKERDIR/appdata/npm/data:/data
-    environment:
-      DB_SQLITE_FILE: "/config/database.sqlite"
-      DISABLE_IPV6: 'true'
+#   npm:
+#     <<: *common-keys-core # See EXTENSION FIELDS at the top
+#     container_name: "nginx-proxy-manager"
+#     image: 'jc21/nginx-proxy-manager:latest'
+#     networks:
+#       npm_proxy:
+#         ipv4_address: 10.10.10.254
+#     ports:
+#       - '80:80' # Public HTTP Port. Port Forwarding on Router is ON.
+#       - '443:443' # Public HTTPS Port. Port Forwarding on Router is ON.
+#       - '81:81' # Admin Web Port. Port Forwarding on Router is OFF. Internal Home Network Access only - 192.168.89.254:81.
+#     volumes:
+#       - $DOCKERDIR/appdata/npm/config:/config 
+#       - $DOCKERDIR/appdata/npm/letsencrypt:/etc/letsencrypt
+#       - $DOCKERDIR/appdata/npm/data:/data
+#     environment:
+#       DB_SQLITE_FILE: "/config/database.sqlite"
+#       DISABLE_IPV6: 'true'
   
   heimdall:
     <<: *common-keys-core
@@ -61,7 +61,7 @@ services:
       npm_proxy:
         ipv4_address: 10.10.10.253
     ports:
-      - '8086:80'
+      - '80:80'
       - '406:443'
     volumes:
       - $DOCKERDIR/appdata/heimdall/config:/config
