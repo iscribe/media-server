@@ -44,7 +44,7 @@ services:
       <<: *default-tz-puid-pgid
 
   lidarr:
-    image: lscr.io/linuxserver/ladarr
+    image: lscr.io/linuxserver/lidarr
     container_name: ladarr
     ports:
       - "8686:8686"
