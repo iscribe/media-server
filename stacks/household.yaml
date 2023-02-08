@@ -8,20 +8,49 @@ x-environment: &default-tz-puid-pgid
 services:
 
 ## Only works in 64bit Raspberry OS
-  mealie:
-    container_name: mealie
-    image: hkotel/mealie:latest
-    restart: always
-    ports:
-      - 9925:80
-    environment:
+#   mealie:
+#     container_name: mealie
+#     image: hkotel/mealie:latest
+#     restart: always
+#     ports:
+#       - 9925:80
+#     environment:
+#       <<: *default-tz-puid-pgid
+#       # Recipe Settings
+#       RECIPE_PUBLIC: 'true'
+#       RECIPE_SHOW_NUTRITION: 'true'
+#       RECIPE_SHOW_ASSETS: 'true'
+#       RECIPE_LANDSCAPE_VIEW: 'true'
+#       RECIPE_DISABLE_COMMENTS: 'false'
+#       RECIPE_DISABLE_AMOUNT: 'false'
+#     volumes:
+#       - $DOCKERDIR/appdata/mealie/data/mealie/data/:/app/data
+      
+  mealie-frontend:
+    image: hkotel/mealie:frontend-v1.0.0beta-5
+    container-name: mealie-frontend
+    environment: 
       <<: *default-tz-puid-pgid
-      # Recipe Settings
-      RECIPE_PUBLIC: 'true'
-      RECIPE_SHOW_NUTRITION: 'true'
-      RECIPE_SHOW_ASSETS: 'true'
-      RECIPE_LANDSCAPE_VIEW: 'true'
-      RECIPE_DISABLE_COMMENTS: 'false'
-      RECIPE_DISABLE_AMOUNT: 'false'
+      API_URL: http://mealie-api:9000
+    restart: always
+    ports: 
+      - 9925:3000
     volumes:
       - $DOCKERDIR/appdata/mealie/data/mealie/data/:/app/data
+      
+  mealie-api:
+    image: hkotel/mealie:api-v1.0.0beta-5
+    container-name: mealie-api
+    deploy:
+      resources:
+        memory: 500M
+    environment: 
+      <<: *default-tz-puid-pgid
+      ALLOW_SIGNUP: false
+      MAX_WORKERS: 1
+      WEB_CONCURENCY: 1
+      BASE_URL: https://${SERVER_IP}:9925
+    volumes:
+      - $DOCKERDIR/appdata/mealie/data/mealie/data/:/app/data   
+    
+    
