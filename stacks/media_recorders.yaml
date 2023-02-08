@@ -11,6 +11,8 @@ services:
   getiplayer:
     image: ghcr.io/thespad/get_iplayer
     container_name: get_iplayer
+    ports:
+      - "1935:1935"
     environment:
       <<: *default-tz-puid-pgid
       INCLUDERADIO: true
