@@ -42,3 +42,16 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       <<: *default-tz-puid-pgid
+
+  lidarr:
+    image: lscr.io/linuxserver/ladarr
+    container_name: ladarr
+    ports:
+      - "8686:8686"
+    volumes:
+      - $DOCKERDIR/appdata/lidarr:/config
+      - $DATADIR:/data
+#       - $DATADIR/media:/data/media
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      <<: *default-tz-puid-pgid
