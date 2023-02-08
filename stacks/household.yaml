@@ -45,7 +45,7 @@ services:
       resources:
         limits:
           memory: 500M
-    restart: aleways
+    restart: always
     ports:
       - 9926:9000
     environment: 
