@@ -17,7 +17,7 @@ services:
       <<: *default-tz-puid-pgid
       INCLUDERADIO: true
       ENABLEIMPORT: true
-      BASEURL: http://${SERVER_IP}:1935
+      BASEURL: http://${SERVER_IP}:9935
     volumes:
       - $DOCKERDIR/appdata/get_iplayer:/config
       - $DATADIR/iplayer:/data
