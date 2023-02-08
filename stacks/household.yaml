@@ -37,5 +37,20 @@ services:
       BASE_URL: https://${SERVER_IP}:9925
     volumes:
       - $DOCKERDIR/appdata/mealie/data/mealie/data/:/app/data   
+      
+  wikijs:
+    image: ghcr.io/requarks/wiki:2
+    environment:
+      <<: *default-tz-puid-pgid
+      DB_TYPE: sqlite
+      DB_PATH: /data/wiki/wikijs.db
+    volumes:
+      - $DOCKERDIR/appdata/wikijs:/data/wiki/  
+    ports:
+      - 9927:3000
+    restart: always
+      
+      
+    
     
     
