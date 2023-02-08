@@ -8,6 +8,17 @@ x-environment: &default-tz-puid-pgid
 
 services:
 
+  getiplayer:
+    image: ghcr.io/thespad/get_iplayer
+    container_name: get_iplayer
+    environment:
+      <<: *default-tz-puid-pgid
+      INCLUDERADIO: true
+      ENABLEIMPORT: true
+    volumes:
+      - $DOCKERDIR/appdata/get_iplayer:/config
+      - $DATADIR/iplayer:/data
+
   prowlarr:
     image: linuxserver/prowlarr:latest
     container_name: prowlarr
