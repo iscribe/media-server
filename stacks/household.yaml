@@ -43,7 +43,8 @@ services:
     container-name: mealie-api
     deploy:
       resources:
-        memory: 500M
+        limits:
+          memory: 500M
     environment: 
       <<: *default-tz-puid-pgid
       ALLOW_SIGNUP: false
