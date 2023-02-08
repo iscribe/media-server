@@ -28,7 +28,7 @@ services:
       
   mealie-frontend:
     image: hkotel/mealie:frontend-v1.0.0beta-5
-    container-name: mealie-frontend
+    container_name: mealie-frontend
     environment: 
       <<: *default-tz-puid-pgid
       API_URL: http://mealie-api:9000
@@ -40,7 +40,7 @@ services:
       
   mealie-api:
     image: hkotel/mealie:api-v1.0.0beta-5
-    container-name: mealie-api
+    container_name: mealie-api
     deploy:
       resources:
         limits:
