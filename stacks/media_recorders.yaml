@@ -22,6 +22,21 @@ services:
       - $DOCKERDIR/appdata/get_iplayer:/config
       - $DATADIR/iplayer:/data
 
+  podgrab:
+    image: akhilrex/podgrab
+    container_name: podgrab
+    environment:
+      <<: *default-tz-puid-pgid
+      - CHECK_FREQUENCY=240
+      - PASSWORD=${PODGRAB_PASSWORD}
+    volumes:
+      - ${DOCKERDIR}/appdata/podgrab:/config
+      - $DATADIR/media/podcasts:/assets
+    ports:
+      - 1936:8080
+    restart: unless-stopped
+  
+
   prowlarr:
     image: linuxserver/prowlarr:latest
     container_name: prowlarr
