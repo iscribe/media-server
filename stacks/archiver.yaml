@@ -9,7 +9,7 @@ services:
 
   archivebox:
     image: archivebox/archivebox:master
-    container_name: arcgivebox
+    container_name: archivebox
     command: server --quick-init 0.0.0.0:8000
     ports:
     - 8000:8000
