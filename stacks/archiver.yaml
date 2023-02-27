@@ -9,6 +9,7 @@ services:
 
   archivebox:
     image: archivebox/archivebox:master
+    container-name: arcgivebox
     command: server --quick-init 0.0.0.0:8000
     ports:
     - 8000:8000
@@ -26,11 +27,12 @@ services:
   # curl -O https://raw.githubusercontent.com/ArchiveBox/ArchiveBox/master/etc/sonic.cfg
   # after starting, backfill any existing Snapshots into the index: docker-compose run archivebox update --index-only
   sonic:
-     image: valeriansaliou/sonic:v1.3.0
-     expose:
-         - 1491
-     environment:
-         - SEARCH_BACKEND_PASSWORD=$SONIC_PASSWORD
-     volumes:
-         - ./sonic.cfg:/etc/sonic.cfg:ro
+    image: valeriansaliou/sonic:v1.3.0
+    container-name: sonic
+    expose:
+    - 1491
+    environment:
+    - SEARCH_BACKEND_PASSWORD=$SONIC_PASSWORD
+    volumes:
+    - $DOCKERDIR/sonfig/config/sonic.cfg:/etc/sonic.cfg:ro
          - ./data/sonic:/var/lib/sonic/store
