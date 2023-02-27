@@ -9,7 +9,7 @@ services:
 
   archivebox:
     image: archivebox/archivebox:master
-    container-name: arcgivebox
+    container_name: arcgivebox
     command: server --quick-init 0.0.0.0:8000
     ports:
     - 8000:8000
@@ -28,7 +28,7 @@ services:
   # after starting, backfill any existing Snapshots into the index: docker-compose run archivebox update --index-only
   sonic:
     image: valeriansaliou/sonic:v1.3.0
-    container-name: sonic
+    container_name: sonic
     expose:
     - 1491
     environment:
