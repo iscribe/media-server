@@ -22,7 +22,7 @@ services:
 #     - SEARCH_BACKEND_HOST_NAME=sonic
 #     - SEARCH_BACKEND_PASSWORD=$SONIC_PASSWORD
     volumes:
-    - $DATADIR/appdata/archivebox:/data
+    - $DOCKERDIR/appdata/archivebox:/data
     - $DATADIR/archivebox:/archive
 
   # To run the Sonic full-text search backend, first download the config file to sonic.cfg
