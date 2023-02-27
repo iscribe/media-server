@@ -7,30 +7,30 @@ x-environment: &default-tz-puid-pgid
 
 services:
 
-    archivebox:
-        image: archivebox/archivebox:master
-        command: server --quick-init 0.0.0.0:8000
-        ports:
-            - 8000:8000
-        environment:
-            - ALLOWED_HOSTS=*                   # add any config options you want as env vars
-            - MEDIA_MAX_SIZE=750m
-            - SEARCH_BACKEND_ENGINE=sonic     # uncomment these if you enable sonic below
-            - SEARCH_BACKEND_HOST_NAME=sonic
-            - SEARCH_BACKEND_PASSWORD=SecretPassword
-        volumes:
-            - ./data:/data
-            # - ./archivebox:/app/archivebox    # for developers working on archivebox
+  archivebox:
+    image: archivebox/archivebox:master
+    command: server --quick-init 0.0.0.0:8000
+    ports:
+    - 8000:8000
+    environment:
+    - ALLOWED_HOSTS=*                   # add any config options you want as env vars
+    - MEDIA_MAX_SIZE=750m
+    - SEARCH_BACKEND_ENGINE=sonic     # uncomment these if you enable sonic below
+    - SEARCH_BACKEND_HOST_NAME=sonic
+    - SEARCH_BACKEND_PASSWORD=$SONIC_PASSWORD
+    volumes:
+#     - $DOCKERDIR/appdata/archivebox/config:/config
+    - $DATADIR/archivebox:/data
 
-    # To run the Sonic full-text search backend, first download the config file to sonic.cfg
-    # curl -O https://raw.githubusercontent.com/ArchiveBox/ArchiveBox/master/etc/sonic.cfg
-    # after starting, backfill any existing Snapshots into the index: docker-compose run archivebox update --index-only
-    # sonic:
-    #    image: valeriansaliou/sonic:v1.3.0
-    #    expose:
-    #        - 1491
-    #    environment:
-    #        - SEARCH_BACKEND_PASSWORD=SecretPassword
-    #    volumes:
-    #        - ./sonic.cfg:/etc/sonic.cfg:ro
-    #        - ./data/sonic:/var/lib/sonic/store
+  # To run the Sonic full-text search backend, first download the config file to sonic.cfg
+  # curl -O https://raw.githubusercontent.com/ArchiveBox/ArchiveBox/master/etc/sonic.cfg
+  # after starting, backfill any existing Snapshots into the index: docker-compose run archivebox update --index-only
+  sonic:
+     image: valeriansaliou/sonic:v1.3.0
+     expose:
+         - 1491
+     environment:
+         - SEARCH_BACKEND_PASSWORD=$SONIC_PASSWORD
+     volumes:
+         - ./sonic.cfg:/etc/sonic.cfg:ro
+         - ./data/sonic:/var/lib/sonic/store
