@@ -16,9 +16,9 @@ services:
     environment:
     - ALLOWED_HOSTS=*                   # add any config options you want as env vars
     - MEDIA_MAX_SIZE=750m
-    - SEARCH_BACKEND_ENGINE=sonic     # uncomment these if you enable sonic below
-    - SEARCH_BACKEND_HOST_NAME=sonic
-    - SEARCH_BACKEND_PASSWORD=$SONIC_PASSWORD
+#     - SEARCH_BACKEND_ENGINE=sonic     # uncomment these if you enable sonic below
+#     - SEARCH_BACKEND_HOST_NAME=sonic
+#     - SEARCH_BACKEND_PASSWORD=$SONIC_PASSWORD
     volumes:
 #     - $DOCKERDIR/appdata/archivebox/config:/config
     - $DATADIR/archivebox:/data
@@ -26,13 +26,13 @@ services:
   # To run the Sonic full-text search backend, first download the config file to sonic.cfg
   # curl -O https://raw.githubusercontent.com/ArchiveBox/ArchiveBox/master/etc/sonic.cfg
   # after starting, backfill any existing Snapshots into the index: docker-compose run archivebox update --index-only
-  sonic:
-    image: valeriansaliou/sonic:v1.3.0
-    container_name: sonic
-    expose:
-    - 1491
-    environment:
-    - SEARCH_BACKEND_PASSWORD=$SONIC_PASSWORD
-    volumes:
-    - $DOCKERDIR/sonic/config/sonic.cfg:/etc/sonic.cfg
-    - $DOCKERDIR/sonic/data:/var/lib/sonic/store
+#   sonic:
+#     image: valeriansaliou/sonic:v1.3.0
+#     container_name: sonic
+#     expose:
+#     - 1491
+#     environment:
+#     - SEARCH_BACKEND_PASSWORD=$SONIC_PASSWORD
+#     volumes:
+#     - $DOCKERDIR/sonic/config/sonic.cfg:/etc/sonic.cfg
+#     - $DOCKERDIR/sonic/data:/var/lib/sonic/store
