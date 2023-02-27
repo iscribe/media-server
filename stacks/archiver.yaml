@@ -34,5 +34,5 @@ services:
     environment:
     - SEARCH_BACKEND_PASSWORD=$SONIC_PASSWORD
     volumes:
-    - $DOCKERDIR/sonfig/config/sonic.cfg:/etc/sonic.cfg:ro
-         - ./data/sonic:/var/lib/sonic/store
+    - $DOCKERDIR/sonic/config/sonic.cfg:/etc/sonic.cfg
+    - $DOCKERDIR/sonic/data:/var/lib/sonic/store
