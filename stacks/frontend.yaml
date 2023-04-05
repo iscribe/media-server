@@ -63,7 +63,7 @@ services:
       <<: *default-tz-puid-pgid
       
   glances:
-    contianer_name: glances
+    container_name: glances
     image: nicolargo/glances:latest-full
     pid: "host"
     restart: unless-stopped
