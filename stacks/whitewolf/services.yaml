@@ -1,8 +1,10 @@
-wiki:
-  image: ghcr.io/requarks/wiki:2
-  environment:
-    DB_TYPE: sqlite
-    DB_FILEPATH: /data/docker/wikijs/wiki.db
-  restart: unless-stopped
-  ports:
-    - "80:3000"
+version: "3"
+services:
+  wiki:
+    image: ghcr.io/requarks/wiki:2
+    environment:
+      DB_TYPE: sqlite
+      DB_FILEPATH: /data/docker/wikijs/wiki.db
+    restart: unless-stopped
+    ports:
+      - "80:3000"
