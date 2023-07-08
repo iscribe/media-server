@@ -4,7 +4,26 @@ services:
     image: ghcr.io/requarks/wiki:2
     environment:
       DB_TYPE: sqlite
-      DB_FILEPATH: /data/docker/wikijs/wiki.db
+      DB_FILEPATH: /data/wiki.db
     restart: unless-stopped
     ports:
       - "80:3000"
+    volumes:
+      - /data/docker/wikijs/config/:/config
+      - /data/docker/wikijs/database/:/data    
+  fretak:
+    image: freetakteam/freetakserver:1.7.5
+    container_name: WhiteWolfTak
+    environment:
+      MSG="Welcome to White Wolf TAK"
+    restart: unless-stopped
+    ports:
+      - 5000:5000 
+      - 8080:8080 
+      - 8087:8087
+      - 8089:8089
+      - 8443:8443
+      - 19023:19023
+    volumes:
+      - /data/docker/freetak/config:/config
+    
