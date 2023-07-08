@@ -15,7 +15,7 @@ services:
     image: freetakteam/freetakserver:1.7.5
     container_name: WhiteWolfTak
     environment:
-      MSG="Welcome to White Wolf TAK"
+      MSG: "Welcome to White Wolf TAK"
     restart: unless-stopped
     ports:
       - 5000:5000 
