@@ -26,4 +26,13 @@ services:
       - 19023:19023
     volumes:
       - /data/docker/freetak/config:/config
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /data/docker/homarr/config:/app/data/configs
+      - /data/docker/homarr/icons:/app/public/icons
+    ports:
+      - '7575:7575'
     
