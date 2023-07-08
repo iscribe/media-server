@@ -33,6 +33,7 @@ services:
     volumes:
       - /data/docker/homarr/config:/app/data/configs
       - /data/docker/homarr/icons:/app/public/icons
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - '7575:7575'
     
