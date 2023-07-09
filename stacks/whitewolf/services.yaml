@@ -11,21 +11,21 @@ services:
     volumes:
       - /data/docker/wikijs/config/:/config
       - /data/docker/wikijs/database/:/data    
-  fretak:
-    image: freetakteam/freetakserver:1.7.5
-    container_name: WhiteWolfTak
-    environment:
-      MSG: "Welcome to White Wolf TAK"
-    restart: unless-stopped
-    ports:
-      - 5000:5000 
-      - 8080:8080 
-      - 8087:8087
-      - 8089:8089
-      - 8443:8443
-      - 19023:19023
-    volumes:
-      - /data/docker/freetak/config:/config
+#  fretak:
+#    image: freetakteam/freetakserver:1.7.5
+#    container_name: WhiteWolfTak
+#    environment:
+#      MSG: "Welcome to White Wolf TAK"
+#    restart: unless-stopped
+#    ports:
+#      - 5000:5000 
+#      - 8080:8080 
+#      - 8087:8087
+#      - 8089:8089
+#      - 8443:8443
+#      - 19023:19023
+#    volumes:
+#      - /data/docker/freetak/config:/config
   homarr:
     container_name: homarr
     image: ghcr.io/ajnart/homarr:latest
