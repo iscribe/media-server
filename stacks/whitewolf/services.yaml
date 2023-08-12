@@ -85,20 +85,20 @@ services:
     networks:
       - app-network
 
-  calibre-web:
-    image: ghcr.io/linuxserver/calibre-web
-    container_name: calibre-web
-    environment:
-      - PUID=1000
-      - PGID=1000
-    volumes:
-      - /data/docker/calibre/web:/config
-      - /data/docker/calibre/library:/books
-    restart: unless-stopped
-    ports:
-      - 3004:8083
-    networks:
-      - app-network
+  # calibre-web:
+  #   image: ghcr.io/linuxserver/calibre-web
+  #   container_name: calibre-web
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #   volumes:
+  #     - /data/docker/calibre/web:/config
+  #     - /data/docker/calibre/library:/books
+  #   restart: unless-stopped
+  #   ports:
+  #     - 3004:8083
+  #   networks:
+  #     - app-network
 
 networks:    
   app-network:
