@@ -67,6 +67,39 @@ services:
     networks:
       - app-network
 
+  calibre:
+    image: ghcr.io/linuxserver/calibre
+    container_name: calibre
+    environment:
+      - PUID=1000 #change this to your user's PID
+      - PGID=1000 #change this to your user's PGID
+    volumes:
+      - /data/docker/calibre/config:/config #change before the ':'
+      - /data/docker/calibre/upload:/uploads #change before the ':'
+      - /data/docker/calibre/plugins:/plugins #change before the ':'
+      - /data/docker/calibre/library:/Calibre_Library #this is where your ebooks will end up
+    ports:
+      - 3002:8080 #change before the ':' if necessary
+      - 3003:8081 #change before the ':' if necessary
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  calibre-web:
+    image: ghcr.io/linuxserver/calibre-web
+    container_name: calibre-web
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /data/docker/calibre/web:/config
+      - /data/docker/calibre/library:/books
+    restart: unless-stopped
+    ports:
+      - 3004:8083
+    networks:
+      - app-network
+
 networks:    
   app-network:
     external: true
