@@ -11,7 +11,9 @@ services:
       - "3000:3000"
     volumes:
       - /data/docker/wikijs/config/:/config
-      - /data/docker/wikijs/database/:/data    
+      - /data/docker/wikijs/database/:/data
+    networks:
+      - app-network
 #  fretak:
 #    image: freetakteam/freetakserver:1.7.5
 #    container_name: WhiteWolfTak
@@ -37,6 +39,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - '7575:7575'
+    networks:
+      - app-network
   npm:
     image: 'jc21/nginx-proxy-manager:latest'
     container_name: npm
@@ -49,6 +53,8 @@ services:
       - '443:443'
     volumes:
       - /data/docker/npm:/data
+    networks:
+      - app-network
   dash:
     image: mauricenino/dashdot:latest
     container_name: dash
@@ -58,5 +64,11 @@ services:
       - '3001:3001'
     volumes:
       - /:/mnt/host:ro
+    networks:
+      - app-network
+
+networks:    
+  app-network:
+    external: true
       
       
