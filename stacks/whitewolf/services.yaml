@@ -86,7 +86,7 @@ services:
   #     - app-network
 
   calibre-web:
-    image: ghcr.io/linuxserver/calibre-web
+    image: ghcr.io/linuxserver/calibre-web:0.6.20-ls204 
     container_name: calibre-web
     environment:
       - PUID=1000
