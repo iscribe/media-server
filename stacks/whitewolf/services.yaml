@@ -101,6 +101,7 @@ services:
   #     - app-network
   audiobookshelf:
     image: ghcr.io/advplyr/audiobookshelf:edge
+    container_name: audiobookshelf
     ports:
       - 13378:80
     volumes:
