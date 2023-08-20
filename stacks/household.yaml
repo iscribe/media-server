@@ -40,6 +40,7 @@ services:
       
   wikijs:
     image: ghcr.io/requarks/wiki:2
+    container_name: wikijs
     environment:
       <<: *default-tz-puid-pgid
       DB_TYPE: sqlite
@@ -49,6 +50,19 @@ services:
     ports:
       - 9927:3000
     restart: always
+
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:edge
+    container_name: audiobookshelf
+    restart: always
+    ports:
+      - 13378:80
+    volumes:
+      - $DOCKERDIR/goku_media/media:/audiobooks
+      - $DOCKERDIR/goku_media/media/podcasts:/podcasts
+      - $DOCKERDIR/appdata/audiobookshelf/config:/config
+      - $DOCKERDIR/appdata/audiobookshelf/metadata:/metadata
+    
       
       
     
