@@ -100,7 +100,7 @@ services:
   #   networks:
   #     - app-network
   audiobookshelf:
-    image: ghcr.io/advplyr/audiobookshelf:latest
+    image: ghcr.io/advplyr/audiobookshelf:edge
     ports:
       - 13378:80
     volumes:
