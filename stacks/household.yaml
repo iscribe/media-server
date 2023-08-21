@@ -58,7 +58,7 @@ services:
     ports:
       - 13378:80
     volumes:
-      - $DOCKERDIR/goku_media/media:/audiobooks
+      - $DOCKERDIR/goku_media/media/audiobooks:/audiobooks
       - $DOCKERDIR/goku_media/media/podcasts:/podcasts
       - $DOCKERDIR/appdata/audiobookshelf/config:/config
       - $DOCKERDIR/appdata/audiobookshelf/metadata:/metadata
