@@ -19,6 +19,8 @@ services:
     container_name: freetak
     environment:
       MSG: "Welcome to White Wolf TAK"
+      IP: 192.168.8.192
+      APPIP: 192.168.8.192
     restart: unless-stopped
     ports:
       - 5000:5000 
