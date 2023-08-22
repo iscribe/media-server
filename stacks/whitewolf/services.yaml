@@ -29,6 +29,7 @@ services:
       - 19023:19023
     volumes:
       - /data/docker/freetak/config:/config
+      - /data/docker/freetak/data:/data
     networks:
       - app-network
   homarr:
