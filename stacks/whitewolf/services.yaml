@@ -15,7 +15,7 @@ services:
     networks:
       - app-network
   fretak:
-    image: freetakteam/freetakserver:1.7.5
+    image: freetakteam/freetakserver:1.2.5
     container_name: freetak
     environment:
       MSG: "Welcome to White Wolf TAK"
