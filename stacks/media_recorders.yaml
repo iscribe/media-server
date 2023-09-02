@@ -36,33 +36,33 @@ services:
       - 1936:8080
     restart: unless-stopped
   
-    ytdl_material:
-        container_name: ytdl
-        environment: 
-            ALLOW_CONFIG_MUTATIONS: 'true'
-            ytdl_mongodb_connection_string: 'mongodb://ytdl-mongo-db:27017'
-            ytdl_use_local_db: 'false'
-            write_ytdl_config: 'true'
-        restart: unless-stopped
-        volumes:
-            - ${DOCKERDIR}/appdata/ytdl/appdata:/app/appdata
-            - ${DATADIR}/media/ytdl/audio:/app/audio
-            - ${DATADIR}/media/ytdl/video:/app/video
-            - ${DOCKERDIR}/appdata/ytdl/subscriptions:/app/subscriptions
-            - ${DOCKERDIR}/appdata/ytdl/users:/app/users
-        ports:
-            - "8998:17442"
-        image: tzahi12345/youtubedl-material:latest
-    ytdl-mongo-db:
-        image: mongo:4.4.18
-        ports:
-            - "27017:27017"
-        logging:
-            driver: "none"          
-        container_name: mongo-db
-        restart: always
-        volumes:
-            - ${DOCKERDIR}/appdata/ytdl/db/:/data/db
+  ytdl_material:
+      container_name: ytdl
+      environment: 
+          ALLOW_CONFIG_MUTATIONS: 'true'
+          ytdl_mongodb_connection_string: 'mongodb://ytdl-mongo-db:27017'
+          ytdl_use_local_db: 'false'
+          write_ytdl_config: 'true'
+      restart: unless-stopped
+      volumes:
+          - ${DOCKERDIR}/appdata/ytdl/appdata:/app/appdata
+          - ${DATADIR}/media/ytdl/audio:/app/audio
+          - ${DATADIR}/media/ytdl/video:/app/video
+          - ${DOCKERDIR}/appdata/ytdl/subscriptions:/app/subscriptions
+          - ${DOCKERDIR}/appdata/ytdl/users:/app/users
+      ports:
+          - "8998:17442"
+      image: tzahi12345/youtubedl-material:latest
+  ytdl-mongo-db:
+      image: mongo:4.4.18
+      ports:
+          - "27017:27017"
+      logging:
+          driver: "none"          
+      container_name: mongo-db
+      restart: always
+      volumes:
+          - ${DOCKERDIR}/appdata/ytdl/db/:/data/db
 
   prowlarr:
     image: linuxserver/prowlarr:latest
