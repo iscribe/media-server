@@ -39,6 +39,7 @@ services:
   ytdl_material:
       container_name: ytdl
       environment: 
+          <<: *default-tz-puid-pgid
           ALLOW_CONFIG_MUTATIONS: 'true'
           ytdl_mongodb_connection_string: 'mongodb://ytdl-mongo-db:27017'
           ytdl_use_local_db: 'false'
