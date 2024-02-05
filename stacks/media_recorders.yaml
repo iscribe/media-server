@@ -49,7 +49,7 @@ services:
           - ${DOCKERDIR}/appdata/ytdl/appdata:/app/appdata
           - ${DATADIR}/media/ytdl/audio:/app/audio
           - ${DATADIR}/media/ytdl/video:/app/video
-          - ${DOCKERDIR}/appdata/ytdl/subscriptions:/app/subscriptions
+          - ${DATADIR}/media/ytdl/subscriptions:/app/subscriptions
           - ${DOCKERDIR}/appdata/ytdl/users:/app/users
       ports:
           - "8998:17442"
