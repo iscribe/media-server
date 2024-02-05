@@ -95,7 +95,7 @@ services:
     volumes:
       - $DOCKERDIR/appdata/sonarr:/config
       - $DATADIR:/data
-      - $DATADIR/media:/data/media
+      #- $DATADIR/media:/data/media
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       <<: *default-tz-puid-pgid
