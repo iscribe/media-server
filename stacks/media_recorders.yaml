@@ -20,7 +20,7 @@ services:
       BASEURL: http://${SERVER_IP}:9935
     volumes:
       - $DOCKERDIR/appdata/get_iplayer:/config
-      - $DATADIR/iplayer:/data
+      - $DATADIR/iplayer:/downloads
 
   podgrab:
     image: akhilrex/podgrab
