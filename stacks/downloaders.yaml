@@ -61,6 +61,6 @@ services:
       - "6789:6789"
     volumes:
       - $DOCKERDIR/appdata/nzbget:/config
-      - $DATADIR/usenet:/downloads/usenet
+      - $DATADIR/usenet:/data/usenet
     environment:
       <<: *default-tz-puid-pgid
