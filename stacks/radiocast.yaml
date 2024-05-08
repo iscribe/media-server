@@ -15,7 +15,7 @@ services:
     environment:
       <<: *default-tz-puid-pgid
     volumes:
-      - $DOCKERDIR/appdata/icecast/config:/icecast/config/
+      - $DOCKERDIR/appdata/icecast/config/icecast.xml:/icecast/icecast.xml
       - $DOCKERDIR/appdata/icecast/log:/icecast/log/
       - $DOCKERDIR/appdata/icecast/web:/icecast/web/
       - $DOCKERDIR/appdata/icecast/admin:/icecast/admin/
