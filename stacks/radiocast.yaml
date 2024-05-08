@@ -26,8 +26,8 @@ services:
     environment:
       <<: *default-tz-puid-pgid
     volumes:
-      - $DOCKERDIR/appdata/icecast/liquidsoap/scripts:/scripts
-      - $DOCKERDIR/appdata/icecast/liquidsoap/medialib:/medialib
+      - $DOCKERDIR/appdata/liquidsoap/scripts:/scripts
+      - $DOCKERDIR/appdata/liquidsoap/medialib:/medialib
       - $DATADIR/media:/media
     command:
       - '/scripts/drakecast.liq'
