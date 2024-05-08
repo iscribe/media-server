@@ -20,6 +20,18 @@ services:
       - $DOCKERDIR/appdata/icecast/web:/icecast/web/
       - $DOCKERDIR/appdata/icecast/admin:/icecast/admin/
 
+  liquidsoap:
+    image:  savonet/liquidsoap:v2.2.5
+    container_name: liquidsoap
+    environment:
+      <<: *default-tz-puid-pgid
+    volumes:
+      - $DOCKERDIR/appdata/icecast/liquidsoap/scripts:/scripts
+      - $DOCKERDIR/appdata/icecast/liquidsoap/medialib:/medialib
+      - $DATADIR/media:/media
+    command:
+      - '/scripts/drakecast.liq'
+
   # getiplayer:
   #   image: ghcr.io/thespad/get_iplayer
   #   container_name: get_iplayer
