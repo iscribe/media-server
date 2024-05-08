@@ -1,1 +1,35 @@
 
+# Common environment values
+x-environment: &default-tz-puid-pgid
+  TZ: $TZ
+  PUID: $PUID
+  PGID: $PGID
+
+services:
+
+  icecast2:
+    image: numblr/icecast2
+    container_name: icecast2
+    ports:
+      - "8000:8000"
+    environment:
+      <<: *default-tz-puid-pgid
+    volumes:
+      $DOCKERDIR/appdata/icecast/config:/icecast/config/
+      $DOCKERDIR/appdata/icecast/log:/icecast/log/
+      $DOCKERDIR/appdata/icecast/web:/icecast/web/
+      $DOCKERDIR/appdata/icecast/admin:/icecast/admin/
+
+  # getiplayer:
+  #   image: ghcr.io/thespad/get_iplayer
+  #   container_name: get_iplayer
+  #   ports:
+  #     - "9935:1935"
+  #   environment:
+  #     <<: *default-tz-puid-pgid
+  #     INCLUDERADIO: true
+  #     ENABLEIMPORT: true
+  #     BASEURL: http://${SERVER_IP}:9935
+  #   volumes:
+  #     - $DOCKERDIR/appdata/get_iplayer:/config
+  #     - $DATADIR/media/iplayer:/downloads
