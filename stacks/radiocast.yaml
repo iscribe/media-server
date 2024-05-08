@@ -15,10 +15,10 @@ services:
     environment:
       <<: *default-tz-puid-pgid
     volumes:
-      $DOCKERDIR/appdata/icecast/config:/icecast/config/
-      $DOCKERDIR/appdata/icecast/log:/icecast/log/
-      $DOCKERDIR/appdata/icecast/web:/icecast/web/
-      $DOCKERDIR/appdata/icecast/admin:/icecast/admin/
+      - $DOCKERDIR/appdata/icecast/config:/icecast/config/
+      - $DOCKERDIR/appdata/icecast/log:/icecast/log/
+      - $DOCKERDIR/appdata/icecast/web:/icecast/web/
+      - $DOCKERDIR/appdata/icecast/admin:/icecast/admin/
 
   # getiplayer:
   #   image: ghcr.io/thespad/get_iplayer
