@@ -89,3 +89,15 @@ services:
     environment:
       <<: *default-tz-puid-pgid
       GLANCES_OPT: "-w"
+
+  homepage:
+    container_name: homepage
+    image: ghcr.io/gethomepage/homepage:latest
+    environment:
+      <<: *default-tz-puid-pgid
+    ports:
+      - 3000:3000
+    volumes:
+      - $DOCKERDIR/appdata/homepage/config:/app/config # Make sure your local config directory exists
+      - /var/run/docker.sock:/var/run/docker.sock:ro # optional, for docker integrations
+    restart: unless-stopped
