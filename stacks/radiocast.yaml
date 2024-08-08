@@ -21,7 +21,8 @@ services:
       - $DOCKERDIR/appdata/icecast/admin:/icecast/admin/
 
   liquidsoap:
-    image:  savonet/liquidsoap:v2.2.5
+    # image:  savonet/liquidsoap:v2.2.5
+    image: savonet/liquidsoap:rolling-release-v2.3.x-minimal
     container_name: liquidsoap
     environment:
       <<: *default-tz-puid-pgid
